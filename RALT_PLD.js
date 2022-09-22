@@ -200,14 +200,15 @@ var TrialCounter = 0;
 //fN.forEach((key, i) => CorrDict[key] = CorrCat.flat()[i]);
 //console.log(CorrDict)
 // Run 'Before Experiment' code from code_4
-var kanjis = get_kanjis(expInfo['session']);
+console.log("expInfo['session']: ", expInfo['session'])
 
-var social_cues = kanjis.slice(0, 2);
-var nonsocial_cues = kanjis.slice(2);
-
-var [CueLeft_s, CueRight_s] = getCues(social_cues);
-
-var [CueLeft_ns, CueRight_ns] = getCues(nonsocial_cues);
+var kanjis;
+var social_cues;
+var nonsocial_cues;
+var CueLeft_s;
+var CueRight_s;
+var CueLeft_ns;
+var CueRight_ns;
 // init psychoJS:
 const psychoJS = new PsychoJS({
   debug: true
@@ -400,6 +401,9 @@ var CycleText3;
 var CycleText4;
 var key_resp_6;
 var trialClock;
+var kanjis;
+var social_cues;
+var nonsocial_cues;
 var fix_cross;
 var cue_left;
 var cue_right;
@@ -708,6 +712,16 @@ async function experimentInit() {
   // Run 'Begin Experiment' code from code_4
   console.log("expInfo['session']: ", expInfo['session'])
   
+  kanjis = get_kanjis(expInfo['session']);
+  
+  social_cues = kanjis.slice(0, 2);
+  nonsocial_cues = kanjis.slice(2);
+  
+  [CueLeft_s, CueRight_s] = getCues(social_cues);
+  [CueLeft_ns, CueRight_ns] = getCues(nonsocial_cues);
+  
+  console.log("CueLeft_s: ", CueLeft_s);
+  console.log("CueRight_s: ", CueRight_s);
   fix_cross = new visual.TextStim({
     win: psychoJS.window,
     name: 'fix_cross',
@@ -1199,7 +1213,7 @@ function training_socialLoopBegin(training_socialLoopScheduler, snapshot) {
     // set up handler to look after randomisation of conditions etc
     training_social = new TrialHandler({
       psychoJS: psychoJS,
-      nReps: 1, method: TrialHandler.Method.RANDOM,
+      nReps: 0, method: TrialHandler.Method.RANDOM,
       extraInfo: expInfo, originPath: undefined,
       trialList: TrialHandler.importConditions(psychoJS.serverManager, 'trainingtrials_social.xlsx', '0:4'),
       seed: undefined, name: 'training_social'
@@ -1265,7 +1279,7 @@ function training_nonsocialLoopBegin(training_nonsocialLoopScheduler, snapshot) 
     // set up handler to look after randomisation of conditions etc
     training_nonsocial = new TrialHandler({
       psychoJS: psychoJS,
-      nReps: 1, method: TrialHandler.Method.RANDOM,
+      nReps: 0, method: TrialHandler.Method.RANDOM,
       extraInfo: expInfo, originPath: undefined,
       trialList: TrialHandler.importConditions(psychoJS.serverManager, 'trainingtrials_nonsocial.xlsx', '0:4'),
       seed: undefined, name: 'training_nonsocial'
