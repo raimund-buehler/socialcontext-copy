@@ -624,7 +624,7 @@ async function experimentInit() {
   Allesklartext_2 = new visual.TextStim({
     win: psychoJS.window,
     name: 'Allesklartext_2',
-    text: 'As you have seen, the picture in the center\nchanges again according to your answer.\n\nAgain, the symbols are a bit ambiguous, so\nsometimes a button press will result in a\ncolorful, moving picture in one round and in a\ngrey, blurry picture in the next one.\n\n',
+    text: 'As you have seen, the picture in the center\nchanges again according to your answer.\n\nAgain, the symbols are a bit ambiguous, so\nsometimes a button press will result in a\ncolorful, moving picture in one round and in a\ngrey, blurry picture in the next one.\n\nPress any key to continue!',
     font: font_choice,
     units: undefined, 
     pos: [0, 0], height: 0.025,  wrapWidth: 70, ori: 0,
