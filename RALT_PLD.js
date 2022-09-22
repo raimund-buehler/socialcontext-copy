@@ -260,6 +260,15 @@ const blocksLoopScheduler = new Scheduler(psychoJS);
 flowScheduler.add(blocksLoopBegin(blocksLoopScheduler));
 flowScheduler.add(blocksLoopScheduler);
 flowScheduler.add(blocksLoopEnd);
+flowScheduler.add(check_instrRoutineBegin());
+flowScheduler.add(check_instrRoutineEachFrame());
+flowScheduler.add(check_instrRoutineEnd());
+flowScheduler.add(check_socialRoutineBegin());
+flowScheduler.add(check_socialRoutineEachFrame());
+flowScheduler.add(check_socialRoutineEnd());
+flowScheduler.add(check_nonsocialRoutineBegin());
+flowScheduler.add(check_nonsocialRoutineEachFrame());
+flowScheduler.add(check_nonsocialRoutineEnd());
 flowScheduler.add(ThanksRoutineBegin());
 flowScheduler.add(ThanksRoutineEachFrame());
 flowScheduler.add(ThanksRoutineEnd());
@@ -272,54 +281,54 @@ psychoJS.start({
   expName: expName,
   expInfo: expInfo,
   resources: [
-    {'name': 'kanji/1/c.png', 'path': 'kanji/1/c.png'},
-    {'name': 'kanji/2/a.png', 'path': 'kanji/2/a.png'},
-    {'name': 'ADFES/Freigestellt/Anger/F04-Anger-Face Forward_freigestellt.mp4', 'path': 'ADFES/Freigestellt/Anger/F04-Anger-Face Forward_freigestellt.mp4'},
-    {'name': 'kanji/1/a.png', 'path': 'kanji/1/a.png'},
-    {'name': 'trainingtrials_social.xlsx', 'path': 'trainingtrials_social.xlsx'},
-    {'name': 'ADFES/Freigestellt/Neutral/M02-Neutral-Face Forward_freigestellt.mp4', 'path': 'ADFES/Freigestellt/Neutral/M02-Neutral-Face Forward_freigestellt.mp4'},
-    {'name': 'trainingtrials_nonsocial.xlsx', 'path': 'trainingtrials_nonsocial.xlsx'},
-    {'name': 'kanji/training/d.png', 'path': 'kanji/training/d.png'},
-    {'name': 'kanji/2/b.png', 'path': 'kanji/2/b.png'},
-    {'name': 'kanji/4/d.png', 'path': 'kanji/4/d.png'},
+    {'name': 'kanji/4/a.png', 'path': 'kanji/4/a.png'},
+    {'name': 'kanji/3/c.png', 'path': 'kanji/3/c.png'},
+    {'name': 'Mandalas_new/neutral/Mandala4_neutral.mp4', 'path': 'Mandalas_new/neutral/Mandala4_neutral.mp4'},
     {'name': 'kanji/3/d.png', 'path': 'kanji/3/d.png'},
-    {'name': 'Mandalas_new/happy/Mandala3_happy.mp4', 'path': 'Mandalas_new/happy/Mandala3_happy.mp4'},
-    {'name': 'ADFES/Freigestellt/Joy/Used/M02-Joy-Face Forward_freigestellt.mp4', 'path': 'ADFES/Freigestellt/Joy/Used/M02-Joy-Face Forward_freigestellt.mp4'},
-    {'name': 'kanji/3/a.png', 'path': 'kanji/3/a.png'},
-    {'name': 'ADFES/Freigestellt/Anger/M06-Anger-Face Forward_freigestellt.mp4', 'path': 'ADFES/Freigestellt/Anger/M06-Anger-Face Forward_freigestellt.mp4'},
-    {'name': 'Mandalas_new/angry/Mandala4_angry.mp4', 'path': 'Mandalas_new/angry/Mandala4_angry.mp4'},
-    {'name': 'Mandalas_new/angry/Mandala1_angry.mp4', 'path': 'Mandalas_new/angry/Mandala1_angry.mp4'},
     {'name': 'ADFES/Freigestellt/Anger/F01-Anger-Face Forward_freigestellt.mp4', 'path': 'ADFES/Freigestellt/Anger/F01-Anger-Face Forward_freigestellt.mp4'},
-    {'name': 'Mandalas_new/neutral/Mandala2_neutral.mp4', 'path': 'Mandalas_new/neutral/Mandala2_neutral.mp4'},
-    {'name': 'Mandalas_new/angry/Mandala2_angry.mp4', 'path': 'Mandalas_new/angry/Mandala2_angry.mp4'},
-    {'name': 'Mandalas_new/angry/Mandala3_angry.mp4', 'path': 'Mandalas_new/angry/Mandala3_angry.mp4'},
-    {'name': 'Mandalas_new/happy/Mandala1_happy.mp4', 'path': 'Mandalas_new/happy/Mandala1_happy.mp4'},
-    {'name': 'ADFES/Freigestellt/Joy/Used/F04-Joy-Face Forward_freigestellt.mp4', 'path': 'ADFES/Freigestellt/Joy/Used/F04-Joy-Face Forward_freigestellt.mp4'},
-    {'name': 'kanji/4/b.png', 'path': 'kanji/4/b.png'},
-    {'name': 'ADFES/Freigestellt/Anger/M02-Anger-Face Forward_freigestellt.mp4', 'path': 'ADFES/Freigestellt/Anger/M02-Anger-Face Forward_freigestellt.mp4'},
+    {'name': 'Mandalas_new/angry/Mandala4_angry.mp4', 'path': 'Mandalas_new/angry/Mandala4_angry.mp4'},
+    {'name': 'kanji/1/b.png', 'path': 'kanji/1/b.png'},
+    {'name': 'kanji/2/b.png', 'path': 'kanji/2/b.png'},
+    {'name': 'Mandalas_new/happy/Mandala3_happy.mp4', 'path': 'Mandalas_new/happy/Mandala3_happy.mp4'},
+    {'name': 'kanji/2/a.png', 'path': 'kanji/2/a.png'},
     {'name': 'ADFES/Freigestellt/Neutral/M06-Neutral-Face Forward_freigestellt.mp4', 'path': 'ADFES/Freigestellt/Neutral/M06-Neutral-Face Forward_freigestellt.mp4'},
+    {'name': 'ADFES/Freigestellt/Anger/F04-Anger-Face Forward_freigestellt.mp4', 'path': 'ADFES/Freigestellt/Anger/F04-Anger-Face Forward_freigestellt.mp4'},
+    {'name': 'Mandalas_new/happy/Mandala2_happy.mp4', 'path': 'Mandalas_new/happy/Mandala2_happy.mp4'},
+    {'name': 'Mandalas_new/angry/Mandala2_angry.mp4', 'path': 'Mandalas_new/angry/Mandala2_angry.mp4'},
+    {'name': 'Mandalas_new/happy/Mandala1_happy.mp4', 'path': 'Mandalas_new/happy/Mandala1_happy.mp4'},
+    {'name': 'kanji/4/c.png', 'path': 'kanji/4/c.png'},
+    {'name': 'kanji/training/d.png', 'path': 'kanji/training/d.png'},
+    {'name': 'Mandalas_new/angry/Mandala1_angry.mp4', 'path': 'Mandalas_new/angry/Mandala1_angry.mp4'},
     {'name': 'ADFES/Freigestellt/Joy/Used/F01-Joy-Face Forward_freigestellt.mp4', 'path': 'ADFES/Freigestellt/Joy/Used/F01-Joy-Face Forward_freigestellt.mp4'},
     {'name': 'Mandalas_new/neutral/Mandala1_neutral.mp4', 'path': 'Mandalas_new/neutral/Mandala1_neutral.mp4'},
-    {'name': 'kanji/1/b.png', 'path': 'kanji/1/b.png'},
+    {'name': 'trainingtrials_social.xlsx', 'path': 'trainingtrials_social.xlsx'},
+    {'name': 'kanji/4/d.png', 'path': 'kanji/4/d.png'},
     {'name': 'ADFES/Freigestellt/Neutral/F04-Neutral-Face Forward_freigestellt.mp4', 'path': 'ADFES/Freigestellt/Neutral/F04-Neutral-Face Forward_freigestellt.mp4'},
-    {'name': 'ADFES/Freigestellt/Neutral/F01-Neutral-Face Forward_freigestellt.mp4', 'path': 'ADFES/Freigestellt/Neutral/F01-Neutral-Face Forward_freigestellt.mp4'},
-    {'name': 'kanji/training/a.png', 'path': 'kanji/training/a.png'},
-    {'name': 'ADFES/Freigestellt/Joy/Used/M06-Joy-Face Forward_freigestellt.mp4', 'path': 'ADFES/Freigestellt/Joy/Used/M06-Joy-Face Forward_freigestellt.mp4'},
-    {'name': 'Mandalas_new/neutral/Mandala3_neutral.mp4', 'path': 'Mandalas_new/neutral/Mandala3_neutral.mp4'},
+    {'name': 'kanji/4/b.png', 'path': 'kanji/4/b.png'},
     {'name': 'kanji/training/b.png', 'path': 'kanji/training/b.png'},
-    {'name': 'kanji/2/c.png', 'path': 'kanji/2/c.png'},
+    {'name': 'ADFES/Freigestellt/Neutral/M02-Neutral-Face Forward_freigestellt.mp4', 'path': 'ADFES/Freigestellt/Neutral/M02-Neutral-Face Forward_freigestellt.mp4'},
+    {'name': 'ADFES/Freigestellt/Neutral/F01-Neutral-Face Forward_freigestellt.mp4', 'path': 'ADFES/Freigestellt/Neutral/F01-Neutral-Face Forward_freigestellt.mp4'},
+    {'name': 'Mandalas_new/angry/Mandala3_angry.mp4', 'path': 'Mandalas_new/angry/Mandala3_angry.mp4'},
     {'name': 'kanji/training/c.png', 'path': 'kanji/training/c.png'},
-    {'name': 'kanji/1/d.png', 'path': 'kanji/1/d.png'},
-    {'name': 'Mandalas_new/neutral/Mandala4_neutral.mp4', 'path': 'Mandalas_new/neutral/Mandala4_neutral.mp4'},
-    {'name': 'kanji/3/b.png', 'path': 'kanji/3/b.png'},
-    {'name': 'kanji/4/a.png', 'path': 'kanji/4/a.png'},
-    {'name': 'deco/bubble.png', 'path': 'deco/bubble.png'},
+    {'name': 'trainingtrials_nonsocial.xlsx', 'path': 'trainingtrials_nonsocial.xlsx'},
+    {'name': 'kanji/training/a.png', 'path': 'kanji/training/a.png'},
     {'name': 'Mandalas_new/happy/Mandala4_happy.mp4', 'path': 'Mandalas_new/happy/Mandala4_happy.mp4'},
-    {'name': 'deco/button.png', 'path': 'deco/button.png'},
-    {'name': 'Mandalas_new/happy/Mandala2_happy.mp4', 'path': 'Mandalas_new/happy/Mandala2_happy.mp4'},
+    {'name': 'kanji/2/c.png', 'path': 'kanji/2/c.png'},
+    {'name': 'kanji/3/a.png', 'path': 'kanji/3/a.png'},
+    {'name': 'ADFES/Freigestellt/Joy/Used/F04-Joy-Face Forward_freigestellt.mp4', 'path': 'ADFES/Freigestellt/Joy/Used/F04-Joy-Face Forward_freigestellt.mp4'},
+    {'name': 'kanji/3/b.png', 'path': 'kanji/3/b.png'},
+    {'name': 'ADFES/Freigestellt/Joy/Used/M02-Joy-Face Forward_freigestellt.mp4', 'path': 'ADFES/Freigestellt/Joy/Used/M02-Joy-Face Forward_freigestellt.mp4'},
+    {'name': 'Mandalas_new/neutral/Mandala2_neutral.mp4', 'path': 'Mandalas_new/neutral/Mandala2_neutral.mp4'},
+    {'name': 'Mandalas_new/neutral/Mandala3_neutral.mp4', 'path': 'Mandalas_new/neutral/Mandala3_neutral.mp4'},
+    {'name': 'deco/bubble.png', 'path': 'deco/bubble.png'},
     {'name': 'kanji/2/d.png', 'path': 'kanji/2/d.png'},
-    {'name': 'kanji/3/c.png', 'path': 'kanji/3/c.png'},
-    {'name': 'kanji/4/c.png', 'path': 'kanji/4/c.png'}
+    {'name': 'kanji/1/a.png', 'path': 'kanji/1/a.png'},
+    {'name': 'kanji/1/c.png', 'path': 'kanji/1/c.png'},
+    {'name': 'ADFES/Freigestellt/Joy/Used/M06-Joy-Face Forward_freigestellt.mp4', 'path': 'ADFES/Freigestellt/Joy/Used/M06-Joy-Face Forward_freigestellt.mp4'},
+    {'name': 'ADFES/Freigestellt/Anger/M06-Anger-Face Forward_freigestellt.mp4', 'path': 'ADFES/Freigestellt/Anger/M06-Anger-Face Forward_freigestellt.mp4'},
+    {'name': 'kanji/1/d.png', 'path': 'kanji/1/d.png'},
+    {'name': 'deco/button.png', 'path': 'deco/button.png'},
+    {'name': 'ADFES/Freigestellt/Anger/M02-Anger-Face Forward_freigestellt.mp4', 'path': 'ADFES/Freigestellt/Anger/M02-Anger-Face Forward_freigestellt.mp4'}
   ]
 });
 
@@ -363,8 +372,6 @@ var text_3;
 var key_resp_3;
 var training_trialClock;
 var fix_cross_3;
-var deco_left_2;
-var deco_right_2;
 var cue_left_2;
 var cue_right_2;
 var slide_response_2;
@@ -372,8 +379,6 @@ var feedback_trainClock;
 var feedback_miss;
 var box_l;
 var box_r;
-var deco_left_fb;
-var deco_right_fb;
 var cue_left_fb;
 var cue_right_fb;
 var Alles_klarClock;
@@ -396,8 +401,6 @@ var CycleText4;
 var key_resp_6;
 var trialClock;
 var fix_cross;
-var deco_left;
-var deco_right;
 var cue_left;
 var cue_right;
 var slide_response;
@@ -405,13 +408,24 @@ var feedback_trialsClock;
 var feedback_miss_2;
 var box_l_2;
 var box_r_2;
-var deco_left_fb_2;
-var deco_right_fb_2;
 var cue_left_fb_2;
 var cue_right_fb_2;
 var Intertrial_IntervalClock;
 var LatCounterClock;
 var BlockCounterClock;
+var check_instrClock;
+var check_instr_text;
+var check_instr_resp;
+var check_socialClock;
+var text_check_s;
+var cue_left_s;
+var cue_right_s;
+var slider_check_s;
+var check_nonsocialClock;
+var text_check_ns;
+var cue_left_ns;
+var cue_right_ns;
+var slider_check_ns;
 var ThanksClock;
 var Thank;
 var end;
@@ -486,24 +500,6 @@ async function experimentInit() {
     depth: -1.0 
   });
   
-  deco_left_2 = new visual.ImageStim({
-    win : psychoJS.window,
-    name : 'deco_left_2', units : undefined, 
-    image : undefined, mask : undefined,
-    ori : 0.0, pos : [0, 0], size : [0.4, 0.4],
-    color : new util.Color([1,1,1]), opacity : undefined,
-    flipHoriz : false, flipVert : false,
-    texRes : 128.0, interpolate : true, depth : -3.0 
-  });
-  deco_right_2 = new visual.ImageStim({
-    win : psychoJS.window,
-    name : 'deco_right_2', units : undefined, 
-    image : undefined, mask : undefined,
-    ori : 0.0, pos : [0, 0], size : [0.4, 0.4],
-    color : new util.Color([1,1,1]), opacity : undefined,
-    flipHoriz : false, flipVert : false,
-    texRes : 128.0, interpolate : true, depth : -4.0 
-  });
   cue_left_2 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'cue_left_2', units : undefined, 
@@ -511,7 +507,7 @@ async function experimentInit() {
     ori : 0, pos : [(- 0.6), 0], size : [0.2, 0.2],
     color : new util.Color([1, 1, 1]), opacity : 1,
     flipHoriz : false, flipVert : false,
-    texRes : 512, interpolate : true, depth : -5.0 
+    texRes : 512, interpolate : true, depth : -3.0 
   });
   cue_right_2 = new visual.ImageStim({
     win : psychoJS.window,
@@ -520,7 +516,7 @@ async function experimentInit() {
     ori : 0, pos : [0.6, 0], size : [0.2, 0.2],
     color : new util.Color([1, 1, 1]), opacity : 1,
     flipHoriz : false, flipVert : false,
-    texRes : 512, interpolate : true, depth : -6.0 
+    texRes : 512, interpolate : true, depth : -4.0 
   });
   slide_response_2 = new visual.Slider({
     win: psychoJS.window, name: 'slide_response_2',
@@ -528,8 +524,8 @@ async function experimentInit() {
     size: [0.5, 0.05], pos: [0, (- 0.4)], ori: 0.0, units: 'height',
     labels: undefined, fontSize: 0.05, ticks: [1, 2, 3, 4, 5],
     granularity: 0.0, style: ["RATING"],
-    color: new util.Color('LightGray'), markerColor: new util.Color([0.0, 0.0, 0.0]), lineColor: new util.Color('White'), 
-    opacity: undefined, fontFamily: 'Open Sans', bold: true, italic: false, depth: -7, 
+    color: new util.Color('LightGray'), markerColor: new util.Color('White'), lineColor: new util.Color('White'), 
+    opacity: undefined, fontFamily: 'Open Sans', bold: true, italic: false, depth: -5, 
     flip: false,
   });
   
@@ -541,7 +537,7 @@ async function experimentInit() {
     text: 'PLEASE RESPOND FASTER!',
     font: font_choice,
     units: undefined, 
-    pos: [0, 0.225], height: 0.05,  wrapWidth: undefined, ori: 0,
+    pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0,
     languageStyle: 'LTR',
     color: new util.Color(color_choice),  opacity: 1,
     depth: -1.0 
@@ -549,7 +545,7 @@ async function experimentInit() {
   
   box_l = new visual.Rect ({
     win: psychoJS.window, name: 'box_l', 
-    width: [0.45, 0.45][0], height: [0.45, 0.45][1],
+    width: [0.35, 0.35][0], height: [0.35, 0.35][1],
     ori: 0.0, pos: [(- 0.6), 0],
     lineWidth: 2.0, 
     colorSpace: 'rgb',
@@ -560,7 +556,7 @@ async function experimentInit() {
   
   box_r = new visual.Rect ({
     win: psychoJS.window, name: 'box_r', 
-    width: [0.45, 0.45][0], height: [0.45, 0.45][1],
+    width: [0.35, 0.35][0], height: [0.35, 0.35][1],
     ori: 0.0, pos: [0.6, 0],
     lineWidth: 2.0, 
     colorSpace: 'rgb',
@@ -569,24 +565,6 @@ async function experimentInit() {
     opacity: 1.0, depth: -5, interpolate: true,
   });
   
-  deco_left_fb = new visual.ImageStim({
-    win : psychoJS.window,
-    name : 'deco_left_fb', units : undefined, 
-    image : undefined, mask : undefined,
-    ori : 0.0, pos : [0, 0], size : [0.4, 0.4],
-    color : new util.Color([1,1,1]), opacity : undefined,
-    flipHoriz : false, flipVert : false,
-    texRes : 128.0, interpolate : true, depth : -6.0 
-  });
-  deco_right_fb = new visual.ImageStim({
-    win : psychoJS.window,
-    name : 'deco_right_fb', units : undefined, 
-    image : undefined, mask : undefined,
-    ori : 0.0, pos : [0, 0], size : [0.4, 0.4],
-    color : new util.Color([1,1,1]), opacity : undefined,
-    flipHoriz : false, flipVert : false,
-    texRes : 128.0, interpolate : true, depth : -7.0 
-  });
   cue_left_fb = new visual.ImageStim({
     win : psychoJS.window,
     name : 'cue_left_fb', units : undefined, 
@@ -594,7 +572,7 @@ async function experimentInit() {
     ori : 0, pos : [(- 0.6), 0], size : [0.2, 0.2],
     color : new util.Color([1, 1, 1]), opacity : 1,
     flipHoriz : false, flipVert : false,
-    texRes : 512, interpolate : true, depth : -8.0 
+    texRes : 512, interpolate : true, depth : -6.0 
   });
   cue_right_fb = new visual.ImageStim({
     win : psychoJS.window,
@@ -603,7 +581,7 @@ async function experimentInit() {
     ori : 0, pos : [0.6, 0], size : [0.2, 0.2],
     color : new util.Color([1, 1, 1]), opacity : 1,
     flipHoriz : false, flipVert : false,
-    texRes : 512, interpolate : true, depth : -9.0 
+    texRes : 512, interpolate : true, depth : -7.0 
   });
   // Initialize components for Routine "Alles_klar"
   Alles_klarClock = new util.Clock();
@@ -690,7 +668,7 @@ async function experimentInit() {
   CycleText2 = new visual.TextStim({
     win: psychoJS.window,
     name: 'CycleText2',
-    text: 'PAUSE\n\nPress any key,\nto start the next block.',
+    text: 'PAUSE\n\nYou have completed another block! In the next block, symbols and pictures will change again!\n\nPress any key,\nto start the next block.',
     font: font_choice,
     units: undefined, 
     pos: [0, 0], height: 0.025,  wrapWidth: undefined, ori: 0,
@@ -742,24 +720,6 @@ async function experimentInit() {
     depth: -1.0 
   });
   
-  deco_left = new visual.ImageStim({
-    win : psychoJS.window,
-    name : 'deco_left', units : undefined, 
-    image : undefined, mask : undefined,
-    ori : 0.0, pos : [0, 0], size : [0.4, 0.4],
-    color : new util.Color([1,1,1]), opacity : undefined,
-    flipHoriz : false, flipVert : false,
-    texRes : 128.0, interpolate : true, depth : -3.0 
-  });
-  deco_right = new visual.ImageStim({
-    win : psychoJS.window,
-    name : 'deco_right', units : undefined, 
-    image : undefined, mask : undefined,
-    ori : 0.0, pos : [0, 0], size : [0.4, 0.4],
-    color : new util.Color([1,1,1]), opacity : undefined,
-    flipHoriz : false, flipVert : false,
-    texRes : 128.0, interpolate : true, depth : -4.0 
-  });
   cue_left = new visual.ImageStim({
     win : psychoJS.window,
     name : 'cue_left', units : undefined, 
@@ -767,7 +727,7 @@ async function experimentInit() {
     ori : 0, pos : [(- 0.6), 0], size : [0.2, 0.2],
     color : new util.Color([1, 1, 1]), opacity : 1,
     flipHoriz : false, flipVert : false,
-    texRes : 512, interpolate : true, depth : -5.0 
+    texRes : 512, interpolate : true, depth : -3.0 
   });
   cue_right = new visual.ImageStim({
     win : psychoJS.window,
@@ -776,7 +736,7 @@ async function experimentInit() {
     ori : 0, pos : [0.6, 0], size : [0.2, 0.2],
     color : new util.Color([1, 1, 1]), opacity : 1,
     flipHoriz : false, flipVert : false,
-    texRes : 512, interpolate : true, depth : -6.0 
+    texRes : 512, interpolate : true, depth : -4.0 
   });
   slide_response = new visual.Slider({
     win: psychoJS.window, name: 'slide_response',
@@ -784,8 +744,8 @@ async function experimentInit() {
     size: [0.5, 0.05], pos: [0, (- 0.4)], ori: 0.0, units: 'height',
     labels: undefined, fontSize: 0.05, ticks: [1, 2, 3, 4, 5],
     granularity: 0.0, style: ["RATING"],
-    color: new util.Color('LightGray'), markerColor: new util.Color([0.0, 0.0, 0.0]), lineColor: new util.Color('White'), 
-    opacity: undefined, fontFamily: 'Open Sans', bold: true, italic: false, depth: -7, 
+    color: new util.Color('LightGray'), markerColor: new util.Color([1.0, 1.0, 1.0]), lineColor: new util.Color('White'), 
+    opacity: undefined, fontFamily: 'Open Sans', bold: true, italic: false, depth: -5, 
     flip: false,
   });
   
@@ -797,7 +757,7 @@ async function experimentInit() {
     text: 'PLEASE RESPOND FASTER!',
     font: font_choice,
     units: undefined, 
-    pos: [0, 0.225], height: 0.05,  wrapWidth: undefined, ori: 0,
+    pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0,
     languageStyle: 'LTR',
     color: new util.Color(color_choice),  opacity: 1,
     depth: -1.0 
@@ -805,7 +765,7 @@ async function experimentInit() {
   
   box_l_2 = new visual.Rect ({
     win: psychoJS.window, name: 'box_l_2', 
-    width: [0.45, 0.45][0], height: [0.45, 0.45][1],
+    width: [0.35, 0.35][0], height: [0.35, 0.35][1],
     ori: 0.0, pos: [(- 0.6), 0],
     lineWidth: 2.0, 
     colorSpace: 'rgb',
@@ -816,7 +776,7 @@ async function experimentInit() {
   
   box_r_2 = new visual.Rect ({
     win: psychoJS.window, name: 'box_r_2', 
-    width: [0.45, 0.45][0], height: [0.45, 0.45][1],
+    width: [0.35, 0.35][0], height: [0.35, 0.35][1],
     ori: 0.0, pos: [0.6, 0],
     lineWidth: 2.0, 
     colorSpace: 'rgb',
@@ -825,24 +785,6 @@ async function experimentInit() {
     opacity: 1.0, depth: -5, interpolate: true,
   });
   
-  deco_left_fb_2 = new visual.ImageStim({
-    win : psychoJS.window,
-    name : 'deco_left_fb_2', units : undefined, 
-    image : undefined, mask : undefined,
-    ori : 0.0, pos : [0, 0], size : [0.4, 0.4],
-    color : new util.Color([1,1,1]), opacity : undefined,
-    flipHoriz : false, flipVert : false,
-    texRes : 128.0, interpolate : true, depth : -6.0 
-  });
-  deco_right_fb_2 = new visual.ImageStim({
-    win : psychoJS.window,
-    name : 'deco_right_fb_2', units : undefined, 
-    image : undefined, mask : undefined,
-    ori : 0.0, pos : [0, 0], size : [0.4, 0.4],
-    color : new util.Color([1,1,1]), opacity : undefined,
-    flipHoriz : false, flipVert : false,
-    texRes : 128.0, interpolate : true, depth : -7.0 
-  });
   cue_left_fb_2 = new visual.ImageStim({
     win : psychoJS.window,
     name : 'cue_left_fb_2', units : undefined, 
@@ -850,7 +792,7 @@ async function experimentInit() {
     ori : 0, pos : [(- 0.6), 0], size : [0.2, 0.2],
     color : new util.Color([1, 1, 1]), opacity : 1,
     flipHoriz : false, flipVert : false,
-    texRes : 512, interpolate : true, depth : -8.0 
+    texRes : 512, interpolate : true, depth : -6.0 
   });
   cue_right_fb_2 = new visual.ImageStim({
     win : psychoJS.window,
@@ -859,7 +801,7 @@ async function experimentInit() {
     ori : 0, pos : [0.6, 0], size : [0.2, 0.2],
     color : new util.Color([1, 1, 1]), opacity : 1,
     flipHoriz : false, flipVert : false,
-    texRes : 512, interpolate : true, depth : -9.0 
+    texRes : 512, interpolate : true, depth : -7.0 
   });
   // Initialize components for Routine "Intertrial_Interval"
   Intertrial_IntervalClock = new util.Clock();
@@ -867,12 +809,114 @@ async function experimentInit() {
   LatCounterClock = new util.Clock();
   // Initialize components for Routine "BlockCounter"
   BlockCounterClock = new util.Clock();
+  // Initialize components for Routine "check_instr"
+  check_instrClock = new util.Clock();
+  check_instr_text = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'check_instr_text',
+    text: 'You have now completed the learning part of the experiment. \nPlease also answer now the following short questions!\n\nPress any key to continue!\n',
+    font: font_choice,
+    units: undefined, 
+    pos: [0, 0], height: 0.025,  wrapWidth: 70, ori: 0,
+    languageStyle: 'LTR',
+    color: new util.Color(color_choice),  opacity: 1,
+    depth: 0.0 
+  });
+  
+  check_instr_resp = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
+  
+  // Initialize components for Routine "check_social"
+  check_socialClock = new util.Clock();
+  text_check_s = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'text_check_s',
+    text: 'Which of these symbols do you think is more likely to be insulting?',
+    font: font_choice,
+    units: undefined, 
+    pos: [0, 0.2], height: 0.025,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -1.0 
+  });
+  
+  cue_left_s = new visual.ImageStim({
+    win : psychoJS.window,
+    name : 'cue_left_s', units : undefined, 
+    image : CueLeft_s.path, mask : undefined,
+    ori : 0.0, pos : [(- 0.3), 0], size : [0.2, 0.2],
+    color : new util.Color([1,1,1]), opacity : undefined,
+    flipHoriz : false, flipVert : false,
+    texRes : 128.0, interpolate : true, depth : -2.0 
+  });
+  cue_right_s = new visual.ImageStim({
+    win : psychoJS.window,
+    name : 'cue_right_s', units : undefined, 
+    image : CueRight_s.path, mask : undefined,
+    ori : 0.0, pos : [0.3, 0], size : [0.2, 0.2],
+    color : new util.Color([1,1,1]), opacity : undefined,
+    flipHoriz : false, flipVert : false,
+    texRes : 128.0, interpolate : true, depth : -3.0 
+  });
+  slider_check_s = new visual.Slider({
+    win: psychoJS.window, name: 'slider_check_s',
+    startValue: undefined,
+    size: [0.5, 0.05], pos: [0, (- 0.4)], ori: 0.0, units: 'height',
+    labels: undefined, fontSize: 0.05, ticks: [1, 2, 3, 4, 5],
+    granularity: 0.0, style: ["RATING"],
+    color: new util.Color('LightGray'), markerColor: new util.Color('White'), lineColor: new util.Color('White'), 
+    opacity: undefined, fontFamily: 'Open Sans', bold: true, italic: false, depth: -4, 
+    flip: false,
+  });
+  
+  // Initialize components for Routine "check_nonsocial"
+  check_nonsocialClock = new util.Clock();
+  text_check_ns = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'text_check_ns',
+    text: 'Which of these symbols do you think is more likely to make the machine work (result in a colorful, moving picture on the screen)?',
+    font: font_choice,
+    units: undefined, 
+    pos: [0, 0.2], height: 0.025,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -1.0 
+  });
+  
+  cue_left_ns = new visual.ImageStim({
+    win : psychoJS.window,
+    name : 'cue_left_ns', units : undefined, 
+    image : CueLeft_ns.path, mask : undefined,
+    ori : 0.0, pos : [(- 0.3), 0], size : [0.2, 0.2],
+    color : new util.Color([1,1,1]), opacity : undefined,
+    flipHoriz : false, flipVert : false,
+    texRes : 128.0, interpolate : true, depth : -2.0 
+  });
+  cue_right_ns = new visual.ImageStim({
+    win : psychoJS.window,
+    name : 'cue_right_ns', units : undefined, 
+    image : CueRight_ns.path, mask : undefined,
+    ori : 0.0, pos : [0.3, 0], size : [0.2, 0.2],
+    color : new util.Color([1,1,1]), opacity : undefined,
+    flipHoriz : false, flipVert : false,
+    texRes : 128.0, interpolate : true, depth : -3.0 
+  });
+  slider_check_ns = new visual.Slider({
+    win: psychoJS.window, name: 'slider_check_ns',
+    startValue: undefined,
+    size: [0.5, 0.05], pos: [0, (- 0.4)], ori: 0.0, units: 'height',
+    labels: undefined, fontSize: 0.05, ticks: [1, 2, 3, 4, 5],
+    granularity: 0.0, style: ["RATING"],
+    color: new util.Color('LightGray'), markerColor: new util.Color('White'), lineColor: new util.Color('White'), 
+    opacity: undefined, fontFamily: 'Open Sans', bold: true, italic: false, depth: -4, 
+    flip: false,
+  });
+  
   // Initialize components for Routine "Thanks"
   ThanksClock = new util.Clock();
   Thank = new visual.TextStim({
     win: psychoJS.window,
     name: 'Thank',
-    text: 'Thank you for your participation!',
+    text: 'Thank you for your participation!\n\nPlease press any button to end the experiment!',
     font: font_choice,
     units: undefined, 
     pos: [0, 0], height: 0.035,  wrapWidth: 70, ori: 0,
@@ -1155,7 +1199,7 @@ function training_socialLoopBegin(training_socialLoopScheduler, snapshot) {
     // set up handler to look after randomisation of conditions etc
     training_social = new TrialHandler({
       psychoJS: psychoJS,
-      nReps: 0, method: TrialHandler.Method.RANDOM,
+      nReps: 1, method: TrialHandler.Method.RANDOM,
       extraInfo: expInfo, originPath: undefined,
       trialList: TrialHandler.importConditions(psychoJS.serverManager, 'trainingtrials_social.xlsx', '0:4'),
       seed: undefined, name: 'training_social'
@@ -1221,7 +1265,7 @@ function training_nonsocialLoopBegin(training_nonsocialLoopScheduler, snapshot) 
     // set up handler to look after randomisation of conditions etc
     training_nonsocial = new TrialHandler({
       psychoJS: psychoJS,
-      nReps: 0, method: TrialHandler.Method.RANDOM,
+      nReps: 1, method: TrialHandler.Method.RANDOM,
       extraInfo: expInfo, originPath: undefined,
       trialList: TrialHandler.importConditions(psychoJS.serverManager, 'trainingtrials_nonsocial.xlsx', '0:4'),
       seed: undefined, name: 'training_nonsocial'
@@ -1325,7 +1369,7 @@ function cyclesLoopBegin(cyclesLoopScheduler, snapshot) {
     // set up handler to look after randomisation of conditions etc
     cycles = new TrialHandler({
       psychoJS: psychoJS,
-      nReps: 6, method: TrialHandler.Method.SEQUENTIAL,
+      nReps: 2, method: TrialHandler.Method.SEQUENTIAL,
       extraInfo: expInfo, originPath: undefined,
       trialList: undefined,
       seed: undefined, name: 'cycles'
@@ -1541,10 +1585,6 @@ function training_trialRoutineBegin(snapshot) {
       loop: false,
       noAudio: true,
       });
-    deco_left_2.setPos(deco_pos_left);
-    deco_left_2.setImage(deco);
-    deco_right_2.setPos(deco_pos_right);
-    deco_right_2.setImage(deco);
     cue_left_2.setImage(cue_left_path);
     cue_right_2.setImage(cue_right_path);
     slide_response_2.reset()
@@ -1552,8 +1592,6 @@ function training_trialRoutineBegin(snapshot) {
     training_trialComponents = [];
     training_trialComponents.push(fix_cross_3);
     training_trialComponents.push(new_neutral_3);
-    training_trialComponents.push(deco_left_2);
-    training_trialComponents.push(deco_right_2);
     training_trialComponents.push(cue_left_2);
     training_trialComponents.push(cue_right_2);
     training_trialComponents.push(slide_response_2);
@@ -1606,34 +1644,6 @@ function training_trialRoutineEachFrame() {
 
     if (new_neutral_3.status === PsychoJS.Status.FINISHED) {  // force-end the routine
         continueRoutine = false;
-    }
-    
-    // *deco_left_2* updates
-    if (t >= 1.0 && deco_left_2.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      deco_left_2.tStart = t;  // (not accounting for frame time here)
-      deco_left_2.frameNStart = frameN;  // exact frame index
-      
-      deco_left_2.setAutoDraw(true);
-    }
-
-    frameRemains = 1.0 + 6.0 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    if (deco_left_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-      deco_left_2.setAutoDraw(false);
-    }
-    
-    // *deco_right_2* updates
-    if (t >= 1.0 && deco_right_2.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      deco_right_2.tStart = t;  // (not accounting for frame time here)
-      deco_right_2.frameNStart = frameN;  // exact frame index
-      
-      deco_right_2.setAutoDraw(true);
-    }
-
-    frameRemains = 1.0 + 6.0 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    if (deco_right_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-      deco_right_2.setAutoDraw(false);
     }
     
     // *cue_left_2* updates
@@ -1797,10 +1807,6 @@ function feedback_trainRoutineBegin(snapshot) {
       });
     box_l.setOpacity(resp == "left");
     box_r.setOpacity(resp == "right");
-    deco_left_fb.setPos(deco_pos_left);
-    deco_left_fb.setImage(deco);
-    deco_right_fb.setPos(deco_pos_right);
-    deco_right_fb.setImage(deco);
     cue_left_fb.setImage(cue_left_path);
     cue_right_fb.setImage(cue_right_path);
     // keep track of which components have finished
@@ -1810,8 +1816,6 @@ function feedback_trainRoutineBegin(snapshot) {
     feedback_trainComponents.push(new_happy_2);
     feedback_trainComponents.push(box_l);
     feedback_trainComponents.push(box_r);
-    feedback_trainComponents.push(deco_left_fb);
-    feedback_trainComponents.push(deco_right_fb);
     feedback_trainComponents.push(cue_left_fb);
     feedback_trainComponents.push(cue_right_fb);
     
@@ -1903,34 +1907,6 @@ function feedback_trainRoutineEachFrame() {
     frameRemains = 0.0 + 6.0 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
     if (box_r.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       box_r.setAutoDraw(false);
-    }
-    
-    // *deco_left_fb* updates
-    if (t >= 0 && deco_left_fb.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      deco_left_fb.tStart = t;  // (not accounting for frame time here)
-      deco_left_fb.frameNStart = frameN;  // exact frame index
-      
-      deco_left_fb.setAutoDraw(true);
-    }
-
-    frameRemains = 0 + 6.0 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    if (deco_left_fb.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-      deco_left_fb.setAutoDraw(false);
-    }
-    
-    // *deco_right_fb* updates
-    if (t >= 0 && deco_right_fb.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      deco_right_fb.tStart = t;  // (not accounting for frame time here)
-      deco_right_fb.frameNStart = frameN;  // exact frame index
-      
-      deco_right_fb.setAutoDraw(true);
-    }
-
-    frameRemains = 0 + 6.0 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    if (deco_right_fb.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-      deco_right_fb.setAutoDraw(false);
     }
     
     // *cue_left_fb* updates
@@ -2528,25 +2504,23 @@ function LateralizationByCycleRoutineBegin(snapshot) {
         //right_cat.toString()) + " left_cat: ") + 
         //left_cat.toString()) + 
     if (((BlockCounter == 0) && (CycleCounter == 0))) {
-        CycleText1_dur = undefined;
-        CycleText2_dur = 0;
-        CycleText3_dur = 0;
-        CycleText4_dur = 0;
-    } else {
-            if (([0, 1, 2, 3].includes(BlockCounter)) && ([1,2, 3, 4, 5].includes(CycleCounter))) {
-                CycleText1_dur = 0;
-                CycleText2_dur = 0;
-                CycleText3_dur = undefined;
-                CycleText4_dur = 0;
-            } else {
-                if ((BlockCounter == 1) && (CycleCounter == 0)) {
-                    CycleText1_dur = 0;
-                    CycleText2_dur = 0;
-                    CycleText3_dur = 0;
-                    CycleText4_dur = undefined;
-                }
-            }
-        }
+      CycleText1_dur = undefined;
+      CycleText2_dur = 0;
+      CycleText3_dur = 0;
+      CycleText4_dur = 0;
+    } else if (([0, 1, 2, 3].includes(BlockCounter)) && ([1,2, 3, 4, 5].includes(CycleCounter))) {
+      continueRoutine = false;
+    } else if ([2, 3].includes(BlockCounter) && (CycleCounter == 0)) {
+      CycleText1_dur = 0;
+      CycleText2_dur = undefined;
+      CycleText3_dur = 0;
+      CycleText4_dur = 0;
+    } else if((BlockCounter == 1) && (CycleCounter == 0)) {
+      CycleText1_dur = 0;
+      CycleText2_dur = 0;
+      CycleText3_dur = 0;
+      CycleText4_dur = undefined;
+    }
     
     CycleText3.setText('PAUSE\n\nPress any key, to start the next cycle.');
     key_resp_6.keys = undefined;
@@ -2764,10 +2738,6 @@ function trialRoutineBegin(snapshot) {
       loop: false,
       noAudio: true,
       });
-    deco_left.setPos(deco_pos_left);
-    deco_left.setImage(deco);
-    deco_right.setPos(deco_pos_right);
-    deco_right.setImage(deco);
     cue_left.setImage(cue_left_path);
     cue_right.setImage(cue_right_path);
     slide_response.reset()
@@ -2775,8 +2745,6 @@ function trialRoutineBegin(snapshot) {
     trialComponents = [];
     trialComponents.push(fix_cross);
     trialComponents.push(new_neutral);
-    trialComponents.push(deco_left);
-    trialComponents.push(deco_right);
     trialComponents.push(cue_left);
     trialComponents.push(cue_right);
     trialComponents.push(slide_response);
@@ -2828,34 +2796,6 @@ function trialRoutineEachFrame() {
 
     if (new_neutral.status === PsychoJS.Status.FINISHED) {  // force-end the routine
         continueRoutine = false;
-    }
-    
-    // *deco_left* updates
-    if (t >= 1.0 && deco_left.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      deco_left.tStart = t;  // (not accounting for frame time here)
-      deco_left.frameNStart = frameN;  // exact frame index
-      
-      deco_left.setAutoDraw(true);
-    }
-
-    frameRemains = 1.0 + 6.0 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    if (deco_left.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-      deco_left.setAutoDraw(false);
-    }
-    
-    // *deco_right* updates
-    if (t >= 1.0 && deco_right.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      deco_right.tStart = t;  // (not accounting for frame time here)
-      deco_right.frameNStart = frameN;  // exact frame index
-      
-      deco_right.setAutoDraw(true);
-    }
-
-    frameRemains = 1.0 + 6.0 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    if (deco_right.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-      deco_right.setAutoDraw(false);
     }
     
     // *cue_left* updates
@@ -3018,10 +2958,6 @@ function feedback_trialsRoutineBegin(snapshot) {
       });
     box_l_2.setOpacity(resp == "left");
     box_r_2.setOpacity(resp == "right");
-    deco_left_fb_2.setPos(deco_pos_left);
-    deco_left_fb_2.setImage(deco);
-    deco_right_fb_2.setPos(deco_pos_right);
-    deco_right_fb_2.setImage(deco);
     cue_left_fb_2.setImage(cue_left_path);
     cue_right_fb_2.setImage(cue_right_path);
     // keep track of which components have finished
@@ -3031,8 +2967,6 @@ function feedback_trialsRoutineBegin(snapshot) {
     feedback_trialsComponents.push(new_happy_5);
     feedback_trialsComponents.push(box_l_2);
     feedback_trialsComponents.push(box_r_2);
-    feedback_trialsComponents.push(deco_left_fb_2);
-    feedback_trialsComponents.push(deco_right_fb_2);
     feedback_trialsComponents.push(cue_left_fb_2);
     feedback_trialsComponents.push(cue_right_fb_2);
     
@@ -3124,34 +3058,6 @@ function feedback_trialsRoutineEachFrame() {
     frameRemains = 0.0 + 6.0 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
     if (box_r_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       box_r_2.setAutoDraw(false);
-    }
-    
-    // *deco_left_fb_2* updates
-    if (t >= 0 && deco_left_fb_2.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      deco_left_fb_2.tStart = t;  // (not accounting for frame time here)
-      deco_left_fb_2.frameNStart = frameN;  // exact frame index
-      
-      deco_left_fb_2.setAutoDraw(true);
-    }
-
-    frameRemains = 0 + 6.0 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    if (deco_left_fb_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-      deco_left_fb_2.setAutoDraw(false);
-    }
-    
-    // *deco_right_fb_2* updates
-    if (t >= 0 && deco_right_fb_2.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      deco_right_fb_2.tStart = t;  // (not accounting for frame time here)
-      deco_right_fb_2.frameNStart = frameN;  // exact frame index
-      
-      deco_right_fb_2.setAutoDraw(true);
-    }
-
-    frameRemains = 0 + 6.0 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    if (deco_right_fb_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-      deco_right_fb_2.setAutoDraw(false);
     }
     
     // *cue_left_fb_2* updates
@@ -3394,10 +3300,10 @@ function LatCounterRoutineEnd(snapshot) {
         thisComponent.setAutoDraw(false);
       }
     }
-    if(CycleCounter < 5){
+    if(CycleCounter < 1){
     CycleCounter = CycleCounter + 1;
     } else {
-        if(CycleCounter == 5) {
+        if(CycleCounter == 1) {
             CycleCounter = 0;
             console.log("CycleCounter reset to:" + CycleCounter)
         }
@@ -3488,6 +3394,405 @@ function BlockCounterRoutineEnd(snapshot) {
         }
     }
     // the Routine "BlockCounter" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset();
+    
+    // Routines running outside a loop should always advance the datafile row
+    if (currentLoop === psychoJS.experiment) {
+      psychoJS.experiment.nextEntry(snapshot);
+    }
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+var _check_instr_resp_allKeys;
+var check_instrComponents;
+function check_instrRoutineBegin(snapshot) {
+  return async function () {
+    TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
+    
+    //--- Prepare to start Routine 'check_instr' ---
+    t = 0;
+    check_instrClock.reset(); // clock
+    frameN = -1;
+    continueRoutine = true; // until we're told otherwise
+    // update component parameters for each repeat
+    check_instr_resp.keys = undefined;
+    check_instr_resp.rt = undefined;
+    _check_instr_resp_allKeys = [];
+    // keep track of which components have finished
+    check_instrComponents = [];
+    check_instrComponents.push(check_instr_text);
+    check_instrComponents.push(check_instr_resp);
+    
+    for (const thisComponent of check_instrComponents)
+      if ('status' in thisComponent)
+        thisComponent.status = PsychoJS.Status.NOT_STARTED;
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+function check_instrRoutineEachFrame() {
+  return async function () {
+    //--- Loop for each frame of Routine 'check_instr' ---
+    // get current time
+    t = check_instrClock.getTime();
+    frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
+    // update/draw components on each frame
+    
+    // *check_instr_text* updates
+    if (t >= 0.0 && check_instr_text.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      check_instr_text.tStart = t;  // (not accounting for frame time here)
+      check_instr_text.frameNStart = frameN;  // exact frame index
+      
+      check_instr_text.setAutoDraw(true);
+    }
+
+    
+    // *check_instr_resp* updates
+    if (t >= 0.0 && check_instr_resp.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      check_instr_resp.tStart = t;  // (not accounting for frame time here)
+      check_instr_resp.frameNStart = frameN;  // exact frame index
+      
+      // keyboard checking is just starting
+      psychoJS.window.callOnFlip(function() { check_instr_resp.clock.reset(); });  // t=0 on next screen flip
+      psychoJS.window.callOnFlip(function() { check_instr_resp.start(); }); // start on screen flip
+      psychoJS.window.callOnFlip(function() { check_instr_resp.clearEvents(); });
+    }
+
+    if (check_instr_resp.status === PsychoJS.Status.STARTED) {
+      let theseKeys = check_instr_resp.getKeys({keyList: [], waitRelease: false});
+      _check_instr_resp_allKeys = _check_instr_resp_allKeys.concat(theseKeys);
+      if (_check_instr_resp_allKeys.length > 0) {
+        check_instr_resp.keys = _check_instr_resp_allKeys[_check_instr_resp_allKeys.length - 1].name;  // just the last key pressed
+        check_instr_resp.rt = _check_instr_resp_allKeys[_check_instr_resp_allKeys.length - 1].rt;
+        // a response ends the routine
+        continueRoutine = false;
+      }
+    }
+    
+    // check for quit (typically the Esc key)
+    if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
+      return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
+    }
+    
+    // check if the Routine should terminate
+    if (!continueRoutine) {  // a component has requested a forced-end of Routine
+      return Scheduler.Event.NEXT;
+    }
+    
+    continueRoutine = false;  // reverts to True if at least one component still running
+    for (const thisComponent of check_instrComponents)
+      if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
+        continueRoutine = true;
+        break;
+      }
+    
+    // refresh the screen if continuing
+    if (continueRoutine) {
+      return Scheduler.Event.FLIP_REPEAT;
+    } else {
+      return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
+function check_instrRoutineEnd(snapshot) {
+  return async function () {
+    //--- Ending Routine 'check_instr' ---
+    for (const thisComponent of check_instrComponents) {
+      if (typeof thisComponent.setAutoDraw === 'function') {
+        thisComponent.setAutoDraw(false);
+      }
+    }
+    check_instr_resp.stop();
+    // the Routine "check_instr" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset();
+    
+    // Routines running outside a loop should always advance the datafile row
+    if (currentLoop === psychoJS.experiment) {
+      psychoJS.experiment.nextEntry(snapshot);
+    }
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+var check_socialComponents;
+function check_socialRoutineBegin(snapshot) {
+  return async function () {
+    TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
+    
+    //--- Prepare to start Routine 'check_social' ---
+    t = 0;
+    check_socialClock.reset(); // clock
+    frameN = -1;
+    continueRoutine = true; // until we're told otherwise
+    // update component parameters for each repeat
+    slider_check_s.reset()
+    // keep track of which components have finished
+    check_socialComponents = [];
+    check_socialComponents.push(text_check_s);
+    check_socialComponents.push(cue_left_s);
+    check_socialComponents.push(cue_right_s);
+    check_socialComponents.push(slider_check_s);
+    
+    for (const thisComponent of check_socialComponents)
+      if ('status' in thisComponent)
+        thisComponent.status = PsychoJS.Status.NOT_STARTED;
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+function check_socialRoutineEachFrame() {
+  return async function () {
+    //--- Loop for each frame of Routine 'check_social' ---
+    // get current time
+    t = check_socialClock.getTime();
+    frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
+    // update/draw components on each frame
+    
+    // *text_check_s* updates
+    if (t >= 0.0 && text_check_s.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      text_check_s.tStart = t;  // (not accounting for frame time here)
+      text_check_s.frameNStart = frameN;  // exact frame index
+      
+      text_check_s.setAutoDraw(true);
+    }
+
+    
+    // *cue_left_s* updates
+    if (t >= 0.0 && cue_left_s.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      cue_left_s.tStart = t;  // (not accounting for frame time here)
+      cue_left_s.frameNStart = frameN;  // exact frame index
+      
+      cue_left_s.setAutoDraw(true);
+    }
+
+    
+    // *cue_right_s* updates
+    if (t >= 0.0 && cue_right_s.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      cue_right_s.tStart = t;  // (not accounting for frame time here)
+      cue_right_s.frameNStart = frameN;  // exact frame index
+      
+      cue_right_s.setAutoDraw(true);
+    }
+
+    
+    // *slider_check_s* updates
+    if (t >= 0.0 && slider_check_s.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      slider_check_s.tStart = t;  // (not accounting for frame time here)
+      slider_check_s.frameNStart = frameN;  // exact frame index
+      
+      slider_check_s.setAutoDraw(true);
+    }
+
+    
+    // Check slider_check_s for response to end routine
+    if (slider_check_s.getRating() !== undefined && slider_check_s.status === PsychoJS.Status.STARTED) {
+      continueRoutine = false; }
+    // check for quit (typically the Esc key)
+    if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
+      return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
+    }
+    
+    // check if the Routine should terminate
+    if (!continueRoutine) {  // a component has requested a forced-end of Routine
+      return Scheduler.Event.NEXT;
+    }
+    
+    continueRoutine = false;  // reverts to True if at least one component still running
+    for (const thisComponent of check_socialComponents)
+      if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
+        continueRoutine = true;
+        break;
+      }
+    
+    // refresh the screen if continuing
+    if (continueRoutine) {
+      return Scheduler.Event.FLIP_REPEAT;
+    } else {
+      return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
+function check_socialRoutineEnd(snapshot) {
+  return async function () {
+    //--- Ending Routine 'check_social' ---
+    for (const thisComponent of check_socialComponents) {
+      if (typeof thisComponent.setAutoDraw === 'function') {
+        thisComponent.setAutoDraw(false);
+      }
+    }
+    if (slider_check_s.getRating() > 3){
+            resp = "right";
+    } else {
+            resp = "left";
+    }
+    
+    console.log("resp_s: ", resp)
+    
+    thisExp.addData("slider_check_s: ", slider_check_s.getRating())
+    thisExp.addData("resp_check_s", resp)
+    thisExp.addData("CueRight_s.path", CueRight_s.path)
+    thisExp.addData("CueRight_s.prob", CueRight_s.prob)
+    thisExp.addData("CueLeft_s.path", CueLeft_s.path)
+    thisExp.addData("CueLeft_s.prob", CueLeft_s.prob)
+    psychoJS.experiment.addData('slider_check_s.response', slider_check_s.getRating());
+    psychoJS.experiment.addData('slider_check_s.rt', slider_check_s.getRT());
+    // the Routine "check_social" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset();
+    
+    // Routines running outside a loop should always advance the datafile row
+    if (currentLoop === psychoJS.experiment) {
+      psychoJS.experiment.nextEntry(snapshot);
+    }
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+var check_nonsocialComponents;
+function check_nonsocialRoutineBegin(snapshot) {
+  return async function () {
+    TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
+    
+    //--- Prepare to start Routine 'check_nonsocial' ---
+    t = 0;
+    check_nonsocialClock.reset(); // clock
+    frameN = -1;
+    continueRoutine = true; // until we're told otherwise
+    // update component parameters for each repeat
+    slider_check_ns.reset()
+    // keep track of which components have finished
+    check_nonsocialComponents = [];
+    check_nonsocialComponents.push(text_check_ns);
+    check_nonsocialComponents.push(cue_left_ns);
+    check_nonsocialComponents.push(cue_right_ns);
+    check_nonsocialComponents.push(slider_check_ns);
+    
+    for (const thisComponent of check_nonsocialComponents)
+      if ('status' in thisComponent)
+        thisComponent.status = PsychoJS.Status.NOT_STARTED;
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+function check_nonsocialRoutineEachFrame() {
+  return async function () {
+    //--- Loop for each frame of Routine 'check_nonsocial' ---
+    // get current time
+    t = check_nonsocialClock.getTime();
+    frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
+    // update/draw components on each frame
+    
+    // *text_check_ns* updates
+    if (t >= 0.0 && text_check_ns.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      text_check_ns.tStart = t;  // (not accounting for frame time here)
+      text_check_ns.frameNStart = frameN;  // exact frame index
+      
+      text_check_ns.setAutoDraw(true);
+    }
+
+    
+    // *cue_left_ns* updates
+    if (t >= 0.0 && cue_left_ns.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      cue_left_ns.tStart = t;  // (not accounting for frame time here)
+      cue_left_ns.frameNStart = frameN;  // exact frame index
+      
+      cue_left_ns.setAutoDraw(true);
+    }
+
+    
+    // *cue_right_ns* updates
+    if (t >= 0.0 && cue_right_ns.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      cue_right_ns.tStart = t;  // (not accounting for frame time here)
+      cue_right_ns.frameNStart = frameN;  // exact frame index
+      
+      cue_right_ns.setAutoDraw(true);
+    }
+
+    
+    // *slider_check_ns* updates
+    if (t >= 0.0 && slider_check_ns.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      slider_check_ns.tStart = t;  // (not accounting for frame time here)
+      slider_check_ns.frameNStart = frameN;  // exact frame index
+      
+      slider_check_ns.setAutoDraw(true);
+    }
+
+    
+    // Check slider_check_ns for response to end routine
+    if (slider_check_ns.getRating() !== undefined && slider_check_ns.status === PsychoJS.Status.STARTED) {
+      continueRoutine = false; }
+    // check for quit (typically the Esc key)
+    if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
+      return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
+    }
+    
+    // check if the Routine should terminate
+    if (!continueRoutine) {  // a component has requested a forced-end of Routine
+      return Scheduler.Event.NEXT;
+    }
+    
+    continueRoutine = false;  // reverts to True if at least one component still running
+    for (const thisComponent of check_nonsocialComponents)
+      if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
+        continueRoutine = true;
+        break;
+      }
+    
+    // refresh the screen if continuing
+    if (continueRoutine) {
+      return Scheduler.Event.FLIP_REPEAT;
+    } else {
+      return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
+function check_nonsocialRoutineEnd(snapshot) {
+  return async function () {
+    //--- Ending Routine 'check_nonsocial' ---
+    for (const thisComponent of check_nonsocialComponents) {
+      if (typeof thisComponent.setAutoDraw === 'function') {
+        thisComponent.setAutoDraw(false);
+      }
+    }
+    if (slider_check_ns.getRating() > 3){
+            resp = "right";
+    } else {
+            resp = "left";
+    }
+    
+    console.log("resp_ns: ", resp)
+    
+    thisExp.addData("slider_check_ns: ", slider_check_ns.getRating())
+    thisExp.addData("resp_check_ns", resp)
+    thisExp.addData("CueRight_ns.path", CueRight_ns.path)
+    thisExp.addData("CueRight_ns.prob", CueRight_ns.prob)
+    thisExp.addData("CueLeft_ns.path", CueLeft_ns.path)
+    thisExp.addData("CueLeft_ns.prob", CueLeft_ns.prob)
+    psychoJS.experiment.addData('slider_check_ns.response', slider_check_ns.getRating());
+    psychoJS.experiment.addData('slider_check_ns.rt', slider_check_ns.getRT());
+    // the Routine "check_nonsocial" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
     
     // Routines running outside a loop should always advance the datafile row
@@ -3629,12 +3934,6 @@ async function quitPsychoJS(message, isCompleted) {
   if (psychoJS.experiment.isEntryEmpty()) {
     psychoJS.experiment.nextEntry();
   }
-  
-  
-  
-  
-  
-  
   
   
   
