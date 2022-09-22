@@ -3975,7 +3975,6 @@ async function quitPsychoJS(message, isCompleted) {
   
   
   
-  thisExp.save()
   
   psychoJS.window.close();
   psychoJS.quit({message: message, isCompleted: isCompleted});
