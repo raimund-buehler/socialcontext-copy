@@ -1213,7 +1213,7 @@ function training_socialLoopBegin(training_socialLoopScheduler, snapshot) {
     // set up handler to look after randomisation of conditions etc
     training_social = new TrialHandler({
       psychoJS: psychoJS,
-      nReps: 0, method: TrialHandler.Method.RANDOM,
+      nReps: 1, method: TrialHandler.Method.RANDOM,
       extraInfo: expInfo, originPath: undefined,
       trialList: TrialHandler.importConditions(psychoJS.serverManager, 'trainingtrials_social.xlsx', '0:4'),
       seed: undefined, name: 'training_social'
@@ -1279,7 +1279,7 @@ function training_nonsocialLoopBegin(training_nonsocialLoopScheduler, snapshot) 
     // set up handler to look after randomisation of conditions etc
     training_nonsocial = new TrialHandler({
       psychoJS: psychoJS,
-      nReps: 0, method: TrialHandler.Method.RANDOM,
+      nReps: 1, method: TrialHandler.Method.RANDOM,
       extraInfo: expInfo, originPath: undefined,
       trialList: TrialHandler.importConditions(psychoJS.serverManager, 'trainingtrials_nonsocial.xlsx', '0:4'),
       seed: undefined, name: 'training_nonsocial'
